@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Twitter Trends Login</title>
+    <link rel="icon" href="~/imgs/twitterlogo.png" type="image/png" />
+    <style>
+        body {
+            background-color: #1DA1F2;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            margin: 100px auto;
+            width: 300px;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #1DA1F2;
+        }
+
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            font-size: 14px;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #1DA1F2;
+            border: none;
+            color: #ffffff;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+
+            input[type="submit"]:hover {
+                background-color: #0B7BBE;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Twitter Trends Login</h2>
+        <form method="POST" action="/Admin/Login">
+            <input type="text" name="username" placeholder="Kullanıcı adı veya e-posta" required><br>
+            <input type="password" name="password" placeholder="Şifre" required><br>
+            <input type="submit" value="Giriş Yap">
+        </form>
+    </div>
+</body>
+</html>

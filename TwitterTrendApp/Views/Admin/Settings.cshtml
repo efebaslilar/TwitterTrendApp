@@ -1,0 +1,147 @@
+﻿@using TwitterTrendApp.Models;
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Trends Setins</title>
+    <link rel="stylesheet" href="~/css/settings.css">
+    <link rel="icon" href="~/img/twitterlogo.png" type="image/png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+<body>
+    <div class="container">
+        <h1>Twitter Trend Yönetimi</h1>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-25">
+                    <label for="country">Ülke:</label>
+                    <select id="country">
+                        <option value="worldwide">Worldwide</option>
+                        <option value="usa">USA</option>
+                        <option value="United Kingdom">United Kingdom</option>
+                        <option value="india">India</option>
+                        <option value="germany">Germany</option>
+                        <option value="france">France</option>
+                        <option value="brazil">Brazil</option>
+                        <option value="southafrica">South Africa</option>
+                        <option value="turkey">Turkey</option>
+                        <option value="Saudi Arabia">Saudi Arabia</option>
+                    </select>
+                </div>
+                <div class="col-25">
+                    <label for="number">Sıra:</label>
+                    <select id="number">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                        <option value="21">21</option>
+                        <option value="22">22</option>
+                        <option value="23">23</option>
+                        <option value="24">24</option>
+                        <option value="25">25</option>
+                        <option value="26">26</option>
+                        <option value="27">27</option>
+                        <option value="28">28</option>
+                        <option value="29">29</option>
+                        <option value="30">30</option>
+                        <option value="31">31</option>
+                        <option value="32">32</option>
+                        <option value="33">33</option>
+                        <option value="34">34</option>
+                        <option value="35">35</option>
+                        <option value="36">36</option>
+                        <option value="37">37</option>
+                        <option value="38">38</option>
+                        <option value="39">39</option>
+                        <option value="40">40</option>
+                        <option value="41">41</option>
+                        <option value="42">42</option>
+                        <option value="43">43</option>
+                        <option value="44">44</option>
+                        <option value="45">45</option>
+                        <option value="46">46</option>
+                        <option value="47">47</option>
+                        <option value="48">48</option>
+                        <option value="49">49</option>
+                        <option value="50">50</option>
+                    </select>
+                </div>
+                <div class="col-25">
+                    <label for="textbox1">Adı:</label>
+                    <input type="text" id="textbox1">
+                </div>
+                <div class="col-25">
+                    <label for="textbox2">Sayısı:</label>
+                    <input type="text" id="textbox2">
+                </div>
+                <div class="col-25">
+                    <label for="textbox3">Trend Saati:</label>
+                    <input type="text" id="textbox3">
+                </div>
+                <div class="col-25">
+                    <label for="textbox4">Trend Dakikası:</label>
+                    <input type="text" id="textbox4">
+                </div>
+                <div class="col-25">
+                    <button id="submit">Gönder</button>
+                </div>
+                 
+            </div>
+       
+          
+        </div>
+        <div class="seperator"></div>
+        <h2>Silme Listesi</h2>
+        <ul class="list-group">
+            @if (ViewBag.Setting.Rows.Count>0)
+            {
+            <li class="list-group-item">
+                <div class="list-content">
+                    <span class="list-item header">Ülke</span>
+                        <span class="list-item header" style="padding-left: 7%;">İndeks</span>
+                        <span class="list-item header" style="padding-left: 7%;">İsim</span>
+                        <span class="list-item header" style="padding-left: 7%;">Sayı</span>
+                        <span class="list-item header" style="padding-left: 7%;">Trending Saati</span>
+                        <span class="list-item header" style="padding-left: 7%;">Trending Dakikası</span>
+                        <span class="list-item header" style="padding-left: 9%;">Sil</span>
+                </div>
+                </li>
+            }
+
+            @for (int i = 0; i < ViewBag.Setting.Rows.Count; i++)
+            {
+                <li class="list-group-item">
+                    <div class="list-content">
+                        <span class="list-item">@ViewBag.Setting.Rows[i]["Country"]</span>
+                        <span class="list-item">@ViewBag.Setting.Rows[i]["HastagIndex"]</span>
+                        <span class="list-item">@ViewBag.Setting.Rows[i]["HastagName"]</span>
+                        <span class="list-item">@ViewBag.Setting.Rows[i]["Quantity"]</span>
+                        <span class="list-item">@ViewBag.Setting.Rows[i]["TrendingHour"]</span>
+                        <span class="list-item">@ViewBag.Setting.Rows[i]["TrendingMinute"]</span>
+                     <button class="delete" id="@ViewBag.Setting.Rows[i]["ID"]">Sil</button>
+                </div>
+            </li>
+            }
+        </ul>
+    </div>
+</body>
+<script src="~/js/adminscript.js"></script>
+</html>
