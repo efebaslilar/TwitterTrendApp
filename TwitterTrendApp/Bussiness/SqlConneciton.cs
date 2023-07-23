@@ -5,8 +5,8 @@ using System.Data;
 using System.Data.SqlClient;
 
 public class SqlConneciton
-{ 
-    static string SQLConnectionString = "Server=mssql02.trwww.com;Database=***;User Id=***;Password=****;";
+{   
+    static string SQLConnectionString = "Server=mssql02.trwww.com;Database=****;User Id=***;Password=***;";
     static SqlConnection sqlConnection = new SqlConnection();
     static SqlCommand sqlCommand = new SqlCommand();
 
@@ -72,7 +72,7 @@ public class SqlConneciton
         {
             string ItemValue = htData[item].ToString();
             colums += item + ",";
-            values += ItemValue + ",";
+            values += ItemValue.Contains("'") ? "N" + ItemValue + "," : ItemValue + ",";
         }
         colums = colums.TrimEnd(',');
         values = values.TrimEnd(',');

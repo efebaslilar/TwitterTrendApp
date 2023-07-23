@@ -41,100 +41,100 @@ SmartData.Set("world", new CacheOptions()
 {
     RenewalRequestInfo = new RequestModel()
     {
-        Url = "https://trends24.in/",
+        Url = "https://twstalker.com/",
 
     },
-    ExpiryTime = TimeSpan.FromMinutes(10),
+    ExpiryTime = TimeSpan.FromMinutes(5),
 });
 
 SmartData.Set("usa", new CacheOptions()
 {
     RenewalRequestInfo = new RequestModel()
     {
-        Url = "https://trends24.in/united-states/",
+        Url = "https://twstalker.com/united-states",
 
     },
-    ExpiryTime = TimeSpan.FromMinutes(10),
+    ExpiryTime = TimeSpan.FromMinutes(5),
 });
 
 SmartData.Set("uk", new CacheOptions()
 {
     RenewalRequestInfo = new RequestModel()
     {
-        Url = "https://trends24.in/united-kingdom/",
+        Url = "https://twstalker.com/united-kingdom",
 
     },
-    ExpiryTime = TimeSpan.FromMinutes(10),
+    ExpiryTime = TimeSpan.FromMinutes(5),
 });
 
 SmartData.Set("india", new CacheOptions()
 {
     RenewalRequestInfo = new RequestModel()
     {
-        Url = "https://trends24.in/india/",
+        Url = "https://twstalker.com/india",
 
     },
-    ExpiryTime = TimeSpan.FromMinutes(10),
+    ExpiryTime = TimeSpan.FromMinutes(5),
 });
 
-SmartData.Set("germany", new CacheOptions()
-{
-    RenewalRequestInfo = new RequestModel()
-    {
-        Url = "https://trends24.in/germany/",
+//SmartData.Set("germany", new CacheOptions()
+//{
+//    RenewalRequestInfo = new RequestModel()
+//    {
+//        Url = "https://trends24.in/germany/",
 
-    },
-    ExpiryTime = TimeSpan.FromMinutes(10),
-});
+//    },
+//    ExpiryTime = TimeSpan.FromMinutes(5),
+//});
 
 SmartData.Set("france", new CacheOptions()
 {
     RenewalRequestInfo = new RequestModel()
     {
-        Url = "https://trends24.in/france/",
+        Url = "https://twstalker.com/france",
 
     },
-    ExpiryTime = TimeSpan.FromMinutes(10),
+    ExpiryTime = TimeSpan.FromMinutes(5),
 });
 
 SmartData.Set("brazil", new CacheOptions()
 {
     RenewalRequestInfo = new RequestModel()
     {
-        Url = "https://trends24.in/brazil/",
+        Url = "https://twstalker.com/brazil",
 
     },
-    ExpiryTime = TimeSpan.FromMinutes(10),
+    ExpiryTime = TimeSpan.FromMinutes(5),
 });
 
 SmartData.Set("africa", new CacheOptions()
 {
     RenewalRequestInfo = new RequestModel()
     {
-        Url = "https://trends24.in/south-africa/",
+        Url = "https://twstalker.com/south-africa",
 
     },
-    ExpiryTime = TimeSpan.FromMinutes(10),
+    ExpiryTime = TimeSpan.FromMinutes(5),
 });
 
 SmartData.Set("turkey", new CacheOptions()
 {
     RenewalRequestInfo = new RequestModel()
     {
-        Url = "https://trends24.in/turkey/",
+        Url = "https://twstalker.com/turkey",
 
     },
-    ExpiryTime = TimeSpan.FromMinutes(10),
+    ExpiryTime = TimeSpan.FromMinutes(5),
 });
 
 SmartData.Set("arabia", new CacheOptions()
 {
     RenewalRequestInfo = new RequestModel()
     {
-        Url = "https://trends24.in/saudi-arabia/",
+        Url = "https://twstalker.com/saudi-arabia",
 
     },
-    ExpiryTime = TimeSpan.FromMinutes(10),
+    ExpiryTime = TimeSpan.FromMinutes(5),
 });
 
 

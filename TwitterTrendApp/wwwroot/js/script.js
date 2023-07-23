@@ -38,14 +38,14 @@ countrySelection.addEventListener('change', (event) => {
                  <div class="card-content">
                      <span class="header"><span class="index">${(i + 1)} · </span>${data[i].hastagName}</span>
                      <span class="info">
-                     <span class="trending-time">Trending since ${data[i].trendingHour} hours ${data[i].trendingMinute} minutes.</span>
-                     <br>
                      <span class="tweet-amount">${data[i].quantity}K Tweets</span>
                      <a href="${data[i].hrefurl}">HASHTAG</a>
                    </span>
                  </div></li>`;
               /*  trendListFragment.appendChild(trendLi);*/
 
+                /* <span class="trending-time">Trending since ${data[i].trendingHour} hours ${data[i].trendingMinute} minutes.</span>
+                    //<br> */
          /*       const hastagLi = document.createElement('li');*/
                 hastagcontent += `<li>
                                       <span class="info">${(i +1)} · Trending</span><br>

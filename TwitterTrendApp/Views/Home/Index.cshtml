@@ -29,10 +29,10 @@
             <a class="logo" href="/"><h1>Twitter Live Trends</h1></a>
             <select class="country-selection">
                 <option value="worldwide">Worldwide</option>
-                <option value="United State">USA</option>
+                <option value="United States">USA</option>
                 <option value="United Kingdom">United Kingdom</option>
                 <option value="india">India</option>
-                <option value="germany">Germany</option>
+          @*      <option value="germany">Germany</option>*@
                 <option value="france">France</option>
                 <option value="brazil">Brazil</option>
                 <option value="south Africa">South Africa</option>
@@ -44,6 +44,7 @@
     <main>
         <section class="realtime-trends">
             <h1 class="title">Realtime Worldwide</h1>
+            <span class="live">LIVE</span>
             <div class="container">
                 <ol class="trend-list">
 
@@ -54,8 +55,8 @@
 
                                 <span class="header"><span class="index"></span>@item.HastagName</span>
                                 <span class="info">
-                                    <span class="trending-time">Trending since @item.TrendingHour hours @item.TrendingMinute minutes.</span>
-                                    <br>
+                                  @*  <span class="trending-time">Trending since @item.TrendingHour hours @item.TrendingMinute minutes.</span>
+                                    <br>*@
                                     <span class="tweet-amount">@item.Quantity K Tweets</span>
                                     <a href="@item.hrefurl">HASHTAG</a>
                                 </span>

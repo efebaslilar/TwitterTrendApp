@@ -5,6 +5,18 @@ using TwitterTrendApp.Models;
 
 namespace TwitterTrendApp.Bussiness
 {
+
+    //    CREATE TABLE Trend (
+    //        ID INT IDENTITY(1,1) PRIMARY KEY,
+    //        Country VARCHAR(255),
+    //        HastagIndex TINYINT,
+    //        HastagName VARCHAR(255),
+    //        Quantity INT,
+    //        hrefurl VARCHAR(255),
+    //        TrendingHour TINYINT,
+    //        TrendingMinute TINYINT
+    //    );
+
     public static class GetData
     {
         private static List<TrendModel> ScrapingData(string html)
@@ -32,7 +44,7 @@ namespace TwitterTrendApp.Bussiness
                             liste.Add(new TrendModel()
                             {
                                 HastagName = linkText,
-                                Quantity = count != 0 ? count : random.Next(20, 110),
+                                Quantity = count != 0 ? count.ToString() : random.Next(20, 110).ToString(),
                                 hrefurl = "https://twitter.com/search?q=" + linkText,
                                 TrendingHour = 12,
                                 TrendingMinute = 23,

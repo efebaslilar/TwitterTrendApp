@@ -21,7 +21,7 @@ namespace TwitterTrendApp.Controllers
         public IActionResult Index()
         {
             string htmlcontent = SmartData.Get("world").ToString();
-            ViewBag.trendlist = FilterData(ScrapingData(htmlcontent), "worldwide");
+            ViewBag.trendlist = FilterData(ParseHtml(htmlcontent), "worldwide");
             return View();
         }
 
@@ -33,34 +33,34 @@ namespace TwitterTrendApp.Controllers
             {
                 case "worldwide":
                     html = SmartData.Get("world").ToString();
-                    return Ok(FilterData(ScrapingData(html), "worldwide"));
-                case "United State":
+                    return Ok(FilterData(ParseHtml(html), "worldwide"));
+                case "United States":
                     html = SmartData.Get("usa").ToString();
-                    return Ok(FilterData(ScrapingData(html), "usa"));
+                    return Ok(FilterData(ParseHtml(html), "usa"));
                 case "United Kingdom":
                     html = SmartData.Get("uk").ToString();
-                    return Ok(FilterData(ScrapingData(html), "United Kingdom"));
+                    return Ok(FilterData(ParseHtml(html), "United Kingdom"));
                 case "india":
                     html = SmartData.Get("india").ToString();
-                    return Ok(FilterData(ScrapingData(html), "india"));
-                case "germany":
-                    html = SmartData.Get("germany").ToString();
-                    return Ok(FilterData(ScrapingData(html), "germany"));
+                    return Ok(FilterData(ParseHtml(html), "india"));
+                //case "germany":
+                //    html = SmartData.Get("germany").ToString();
+                //    return Ok(FilterData(ParseHtml(html), "germany"));
                 case "france":
                     html = SmartData.Get("france").ToString();
-                    return Ok(FilterData(ScrapingData(html), "france"));
+                    return Ok(FilterData(ParseHtml(html), "france"));
                 case "brazil":
                     html = SmartData.Get("brazil").ToString();
-                    return Ok(FilterData(ScrapingData(html), "brazil"));
+                    return Ok(FilterData(ParseHtml(html), "brazil"));
                 case "south Africa":
                     html = SmartData.Get("africa").ToString();
-                    return Ok(FilterData(ScrapingData(html), "southafrica"));
+                    return Ok(FilterData(ParseHtml(html), "southafrica"));
                 case "turkey":
                     html = SmartData.Get("turkey").ToString();
-                    return Ok(FilterData(ScrapingData(html), "turkey"));
+                    return Ok(FilterData(ParseHtml(html), "turkey"));
                 case "Saudi Arabia":
                     html = SmartData.Get("arabia").ToString();
-                    return Ok(FilterData(ScrapingData(html), "Saudi Arabia"));
+                    return Ok(FilterData(ParseHtml(html), "Saudi Arabia"));
                 default:
                     break;
             }
@@ -75,10 +75,10 @@ namespace TwitterTrendApp.Controllers
                 list[Convert.ToInt32(item["HastagIndex"])-1] = new TrendModel()
                 {
                     HastagName = item["HastagName"].ToString(),
-                    Quantity = Convert.ToInt32(item["Quantity"]),
-                    hrefurl = item["hrefurl"].ToString(),
-                    TrendingHour = Convert.ToByte(item["TrendingHour"]),
-                    TrendingMinute = Convert.ToByte( item["TrendingMinute"])
+                    Quantity = item["Quantity"].ToString(),
+                    hrefurl = "https://twitter.com/search?q="+item["hrefurl"].ToString(),
+                    //TrendingHour = Convert.ToByte(item["TrendingHour"]),
+                    //TrendingMinute = Convert.ToByte( item["TrendingMinute"])
 
                 };
             }
@@ -117,7 +117,7 @@ namespace TwitterTrendApp.Controllers
                         liste.Add(new TrendModel()
                         {
                             HastagName = linkText,
-                            Quantity = count != 0 ? count : random.Next(20, 110),
+                            Quantity = count != 0 ? count.ToString() : random.Next(20, 110).ToString(),
                             hrefurl = "https://twitter.com/search?q=" + linkText,
                             TrendingHour =  GetTrendingTime.trendingTimes[sayac].TrendingHour,
                             TrendingMinute = GetTrendingTime.trendingTimes[sayac].TrendingMinute,
@@ -128,6 +128,70 @@ namespace TwitterTrendApp.Controllers
             }
             return liste;
         }
+
+        //public List<TrendModel> ParseHtml(string html)
+        //{
+        //    List<TrendModel> liste = new List<TrendModel>();
+
+        //    var doc = new HtmlDocument();
+        //    doc.LoadHtml(html);
+        //    var contentNodes = doc.DocumentNode.SelectNodes("//div[@class='trend-item__content']");
+
+        //    if (contentNodes != null)
+        //    {
+        //        foreach (var contentNode in contentNodes)
+        //        {
+        //            var anchorNode = contentNode.Descendants("a").FirstOrDefault();
+        //            var spanNode = contentNode.SelectSingleNode(".//span[@class='label']");
+        //            if (anchorNode != null)
+        //            {
+        //                liste.Add(new TrendModel()
+        //                {
+        //                    hrefurl= anchorNode.GetAttributeValue("href", string.Empty),
+        //                    HastagName = anchorNode.InnerText,
+        //                    Quantity= Convert.ToInt32(spanNode.InnerText.Replace(" B Tweet","")),
+        //                });
+        //                var href = anchorNode.GetAttributeValue("href", string.Empty);
+        //                var anchorText = anchorNode.InnerText.Trim();
+
+        //            }
+
+        //        }
+        //    }
+
+        //    return liste;
+        //}
+
+
+        public List<TrendModel> ParseHtml(string html)
+        {
+            List<TrendModel> liste = new List<TrendModel>();
+
+            var doc = new HtmlDocument();
+            doc.LoadHtml(html);
+            var contentNodes = doc.DocumentNode.SelectNodes("//div[@class='trend-item__content']");
+
+            if (contentNodes != null)
+            {
+                foreach (var contentNode in contentNodes)
+                {
+                    var anchorNode = contentNode.Descendants("a").FirstOrDefault();
+                    var spanNode = contentNode.SelectSingleNode(".//span[@class='label']");
+                    if (anchorNode != null && spanNode != null)
+                    {     
+                            liste.Add(new TrendModel()
+                            {
+                                hrefurl = anchorNode.GetAttributeValue("href", string.Empty),
+                                HastagName = anchorNode.InnerText.Trim(),
+                                Quantity = spanNode.InnerText.Split(' ')[0]
+                            });
+                    }
+                }
+            }
+
+            return liste;
+        }
+
 
     }
 }
