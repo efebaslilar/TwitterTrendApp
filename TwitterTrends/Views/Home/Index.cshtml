@@ -1,0 +1,85 @@
+﻿@using TwitterTrends.Models;
+@{
+    var trendList = ViewBag.trendlist as List<TrendModel>;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="~/img/twitterlogo.png" type="image/png" />
+    <link rel="stylesheet" href="~/newtrends/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&ital@1&display=swap" rel="stylesheet">
+    <title>Trend List - Twitter Live Trend | Realtime Worldwide Twitter Trend | USA-UK-BRAZIL-GERMANY-TURKEY |</title>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7GE3KM00HS"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-7GE3KM00HS');
+    </script>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="/"><img class="logo-left" src="~/newtrends/imgs/logosoldaki.png" alt="logo"></a>
+        <div class="container">
+            <a class="logo" href="/"><h1>Twitter Live Trends</h1></a>
+            <select class="country-selection">
+                <option value="worldwide">Worldwide</option>
+                <option value="United State">USA</option>
+                <option value="United Kingdom">United Kingdom</option>
+                <option value="india">India</option>
+                <option value="germany">Germany</option>
+                <option value="france">France</option>
+                <option value="brazil">Brazil</option>
+                <option value="south Africa">South Africa</option>
+                <option value="turkey">Turkey</option>
+                <option value="Saudi Arabia">Saudi Arabia</option>
+            </select>
+        </div>
+    </nav>
+    <main>
+        <section class="realtime-trends">
+            <h1 class="title">Realtime Worldwide</h1>
+            <div class="container">
+                <ol class="trend-list">
+
+                    @foreach (var item in trendList)
+                    {
+                        @Html.Partial("_TrendCard", item)
+                        ;
+                    }
+
+
+                </ol>
+            </div>
+        </section>
+        <section class="trends-twitter">
+            <h1 class="header">Worldwide Trending</h1>
+            <div class="container">
+                <ul id="hashtag-list" style="list-style: none;">
+                    @for (int i = 0; i < trendList.Count; i++)
+                    {
+                        var item = trendList[i];
+                        @Html.Partial("_TrendList", item, new ViewDataDictionary(this.ViewData) { { "ItemIndex", i + 1 } });
+                    }
+                </ul>
+            </div>
+        </section>
+
+    </main>
+    <footer id="footer">
+        <p>
+            Twitter Live Trends is your source of realtime Twitter Trending topics and hashtags. Trends are updated every five minutes, so you get to know the trends as they happen. <br>
+
+            Realtime Trends also available for Worldwide, United States, India, United Kingdom, France, Brazil, South Africa, Turkey, Saudi Arabia, Pakistan.
+            Twitter Live Trends provides this data for analysis only. It has no commercial purpose.
+        </p>
+    </footer>
+    <script src="~/js/script.js"></script>
+</body>
+</html>
+

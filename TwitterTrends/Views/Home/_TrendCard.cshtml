@@ -1,0 +1,15 @@
+﻿@using TwitterTrends.Models;
+@model TrendModel
+
+<li>
+    <div class="card-content">
+
+        <span class="header"><span class="index"></span>@Model.Name</span>
+        <span class="info">
+            <span class="trending-time">Trending since @Model.TrendingHour hours @Model.TrendingMinute minutes.</span>
+            <br>
+            <span class="tweet-amount">@Model.Count K Tweets</span>
+            <a href="@Model.hrefurl">HASHTAG</a>
+        </span>
+    </div>
+</li>

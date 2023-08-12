@@ -1,0 +1,8 @@
+﻿@using TwitterTrends.Models;
+@model TrendModel
+
+<li>
+    <span class="info">@ViewData["ItemIndex"] · Trending</span><br>
+    <span class="title">@Model.Name</span><br>
+    <span class="description">@Model.Count K Tweets</span>
+</li>
